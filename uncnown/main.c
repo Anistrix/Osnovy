@@ -24,7 +24,7 @@ int main(void)
 	}
 	end = &LINE[i]; // prisvaivayem ukasatelu end adres raspolozhenia kontsa stroki v massive LINE
 	printf("\n%d\n%c\n%c\n%d\n%c", bgn, *bgn, *(bgn+1), end, *end);
-	process_LINE(LINE, *bgn, *end); // vipolnayem funktsiu
+	process_LINE(LINE, bgn, end); // vipolnayem funktsiu
 	printf("Result: ");
 	puts(LINE); // vivodim massiv LINE
 
@@ -73,12 +73,14 @@ void process_LINE(char buffer[], char *bgn, char *end) // telo funktsii
 			}
 			else
 			{
+				flag = 0;
+				length = i - j;
 				if (found == NO)
 				{
-					length = i - j;
-					for (flag = 0, img_i = 0, img_length = 0; bgn + img_i < end; ++img_i, ++k)
+					counter = 0;
+					for (img_i = 0, img_length = 0; bgn + img_i < end; ++img_i, ++k)
 					{
-						if (*(bgn + img_i) == " " || *(bgn + img_i) == "." || *(bgn + img_i) == "," || *(bgn + img_i) == "\n" || *(bgn + img_i) == "\t")
+						if (*(bgn + img_i) == ' ' || *(bgn + img_i) == '.' || *(bgn + img_i) == ',' || *(bgn + img_i) == '\n' || *(bgn + img_i) == '\t')
 						{
 							counter = 0;
 						}
@@ -95,13 +97,14 @@ void process_LINE(char buffer[], char *bgn, char *end) // telo funktsii
 							++flag;
 						}
 					}
-					if (flag < 2)
+				}
+				if (flag < 2 || found == YES)
+				{
+					img_length = post_i + length + 1;
+					for (k = j; post_i < img_length; ++k)
 					{
-						for (k = j ; post_i < post_i + length + 1; ++k)
-						{
-							++post_i;
-							buffer[post_i] = buffer[k];
-						}
+						++post_i;
+						buffer[post_i] = buffer[k];
 					}
 				}
 				found = NO;
