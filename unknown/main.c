@@ -1,4 +1,4 @@
-#pragma warning(disable : 4996) // отключение ошибки c4996
+#pragma warning(disable : 4996) //
 #include <stdio.h>
 //
 #define YES 1
