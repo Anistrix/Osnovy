@@ -43,7 +43,7 @@ int main(void)
 
 	N = N & mask; // обнуляем ненужные байты
 
-	printf("Result: %lu", N); // lu - long unsigned
+	printf("Result: %lu", N); // lu - long unsigned по-другому нормально не выводится значение
 
 	return 0;
 }
