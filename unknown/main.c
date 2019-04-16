@@ -10,8 +10,6 @@ void process_LINE(char buffer[]); // ob'yavlayem funktsiuu
 int main(void)
 {
 	char LINE[MAXLINE]; // ob'yevlayem massiv LINE
-	//int i; // dlya nahojdeniya \0
-	//int c;
 
 	printf("Enter words:\n");
 	gets(LINE); // schitivayem stroku i vnosim v massiv LINE
@@ -31,7 +29,6 @@ void process_LINE(char buffer[]) // telo funktsii
 	int j; // positsiya pervogo simvola slova
 	int k; // peremennaya
 	int length; // dlina slova
-	//int img_length; // dlina mnimogo slova
 	int img_i; // mnimii tekushii simvol
 	int img_j; // mnimoye achalo slova
 	int counter; // schyotchik bukv
